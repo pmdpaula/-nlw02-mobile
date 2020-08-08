@@ -5,9 +5,6 @@ import { Ionicons } from '@expo/vector-icons';
 import TeacherList from './../pages/TeacherList/index';
 import Favorites from './../pages/Favorites/index';
 
-import Landing from '../pages/Landing';
-import GiveClasses from './../pages/GiveClasses/index';
-
 const { Navigator, Screen } = createBottomTabNavigator();
 
 const StudyTabs = () => {
@@ -45,9 +42,9 @@ const StudyTabs = () => {
         component={TeacherList}
         options={{
           tabBarLabel: 'Proffys',
-          tabBarIcon: ({ color, size }) => {
+          tabBarIcon: ({ color, size, focused }) => {
             return (
-              <Ionicons name="ios-easel" size={size} color={color} />
+              <Ionicons name="ios-easel" size={size} color={focused ? '#8257E5' : color} />
             );
           }
         }}
@@ -57,9 +54,9 @@ const StudyTabs = () => {
         component={Favorites} 
         options={{
           tabBarLabel: 'Favoritos',
-          tabBarIcon: ({ color, size }) => {
+          tabBarIcon: ({ color, size, focused }) => {
             return (
-              <Ionicons name="ios-heart" size={size} color={color} />
+              <Ionicons name="ios-heart" size={size} color={focused ? '#8257E5' : color} />
             );
           }
         }}
