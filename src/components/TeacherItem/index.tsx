@@ -8,30 +8,42 @@ import whatsappIcon from '../../assets/images/icons/whatsapp.png';
 
 import styles from './styles';
 
-const TeacherItem = () => {
+
+export interface Teacher {
+  id: number;
+  avatar: string;
+  bio: string;
+  cost: number;
+  name: string;
+  subject: string;
+  whatsapp: string;
+}
+interface TeacherItemProps {
+  teacher: Teacher;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
         <Image
           style={styles.avatar}
-          source={{ uri: 'https://github.com/pmdpaula.png' }}
+          source={{ uri: teacher.avatar }}
         />
         <View style={styles.profileInfo}>
-          <Text style={styles.name}>Pedro Machado de Paula</Text>
-          <Text style={styles.subject}>História</Text>
+          <Text style={styles.name}>{teacher.name}</Text>
+          <Text style={styles.subject}>{teacher.subject}</Text>
         </View>
       </View>
 
       <Text style={styles.bio}>
-        Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Per aumento de cachacis, eu reclamis.
-        {'\n'}{'\n'}
-        Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.
+        {teacher.bio}
       </Text>
 
       <View style={styles.footer}>
         <Text style={styles.price}>
           Preço/hora {'   '}
-          <Text style={styles.priceValue}>R$ 120,00</Text>
+          <Text style={styles.priceValue}>R$ {teacher.cost}</Text>
         </Text>
 
         <View style={styles.buttonContainer}>
